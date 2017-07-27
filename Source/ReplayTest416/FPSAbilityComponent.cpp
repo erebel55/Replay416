@@ -71,11 +71,11 @@ void UFPSAbilityComponent::Start(int32 Index)
 
 void UFPSAbilityComponent::StartAbility(int32 Index)
 {
-    if (OwningCharacter && OwningCharacter->IsLocallyControlled())
-    {
+    //if (OwningCharacter && OwningCharacter->IsLocallyControlled())
+    //{
         // Start the Ability
         AbilitySet->Abilities[Index]->Start();
-    }
+   // }
 
     ServerStartAbility(Index);
 }
@@ -108,5 +108,12 @@ void UFPSAbilityComponent::MulticastStartAbility_Implementation(int32 Index)
     }
     // END COMMENT OUT TO FIX
 
-    //AbilitySet->Abilities[Index]->Start(); // UNCOMMENT TO FIX
+    
+    if (OwningCharacter && !OwningCharacter->IsLocallyControlled()) // **NEW**
+    {
+        if (AbilitySet && AbilitySet->Abilities.IsValidIndex(Index) && AbilitySet->Abilities[Index]) // **NEW**
+        {
+            AbilitySet->Abilities[Index]->Start(); // UNCOMMENT TO FIX
+        }
+    }
 }
