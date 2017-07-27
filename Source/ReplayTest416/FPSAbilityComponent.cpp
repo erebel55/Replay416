@@ -97,7 +97,7 @@ void UFPSAbilityComponent::MulticastStartAbility_Implementation(int32 Index)
 {
     // COMMENT OUT TO FIX
     // Ability doesn't already exist (simulated proxy)
-    if (AbilitySet && (!AbilitySet->Abilities.IsValidIndex(Index) || AbilitySet->Abilities[Index] == nullptr)) // TODO: cleaner way to write this clause?
+    /*if (AbilitySet && (!AbilitySet->Abilities.IsValidIndex(Index) || AbilitySet->Abilities[Index] == nullptr)) // TODO: cleaner way to write this clause?
     {
         // Create the ability
         UFPSAbility* Ability = NewObject<UFPSAbility>(this, AbilitySet->DefaultAbilityClasses[Index]);
@@ -105,8 +105,8 @@ void UFPSAbilityComponent::MulticastStartAbility_Implementation(int32 Index)
 
         AbilitySet->Abilities[Index] = Ability;
         Ability->Start();
-    }
+    }*/
     // END COMMENT OUT TO FIX
 
-    //AbilitySet->Abilities[Index]->Start(); // UNCOMMENT TO FIX
+    AbilitySet->Abilities[Index]->Start(); // UNCOMMENT TO FIX
 }

@@ -15,14 +15,14 @@ void UFPSAbilitySet::PostInitProperties()
 
     AActor* OuterActor = Cast<AActor>(GetOuter());
     // COMMENT OUT OT FIX
-    if (OuterActor && OuterActor->Role == ROLE_SimulatedProxy)
+    /*if (OuterActor && OuterActor->Role == ROLE_SimulatedProxy)
     {
         // Size the array to match the same number of abilities
         // These will be null until they are activated
         // So if an element is non-null it is active
         // and if an element is null it is not active
         Abilities.SetNum(DefaultAbilityClasses.Num());
-    }
+    }*/
     // END COMMENT OUT TO FIX
 }
 
@@ -36,8 +36,8 @@ void UFPSAbilitySet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLi
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
     // Replicate Abilities to owning client only
-    DOREPLIFETIME_CONDITION(UFPSAbilitySet, Abilities, /*COND_OwnerOnly*/ COND_ReplayOrOwner); // COMMENT OUT TO FIX
-    //DOREPLIFETIME(UFPSAbilitySet, Abilities); // UNCOMMENT TO FIX
+    //DOREPLIFETIME_CONDITION(UFPSAbilitySet, Abilities, /*COND_OwnerOnly*/ COND_ReplayOrOwner); // COMMENT OUT TO FIX
+    DOREPLIFETIME(UFPSAbilitySet, Abilities); // UNCOMMENT TO FIX
 }
 
 bool UFPSAbilitySet::ReplicateSubobjects(class UActorChannel* Channel, class FOutBunch* Bunch, FReplicationFlags* RepFlags)

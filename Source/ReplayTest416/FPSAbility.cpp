@@ -38,11 +38,11 @@ void UFPSAbility::GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifet
 {
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
-    DOREPLIFETIME_CONDITION(UFPSAbility, Animation, /*COND_OwnerOnly*/ COND_ReplayOrOwner); // COMMENT OUT TO FIX
-    DOREPLIFETIME_CONDITION(UFPSAbility, ID, /*COND_OwnerOnly*/ COND_ReplayOrOwner);// COMMENT OUT TO FIX
+    //DOREPLIFETIME_CONDITION(UFPSAbility, Animation, /*COND_OwnerOnly*/ COND_ReplayOrOwner); // COMMENT OUT TO FIX
+    //DOREPLIFETIME_CONDITION(UFPSAbility, ID, /*COND_OwnerOnly*/ COND_ReplayOrOwner);// COMMENT OUT TO FIX
 
-    //DOREPLIFETIME(UFPSAbility, Animation);     // UNCOMMENT TO FIX
-    //DOREPLIFETIME(UFPSAbility, ID);     // UNCOMMENT TO FIX
+    DOREPLIFETIME(UFPSAbility, Animation);     // UNCOMMENT TO FIX
+    DOREPLIFETIME(UFPSAbility, ID);     // UNCOMMENT TO FIX
 }
 
 void UFPSAbility::Start()
@@ -64,13 +64,13 @@ void UFPSAbility::Execute()
 void UFPSAbility::End()
 {
     // COMMENT OUT TO FIX
-    if (Character && Character->Role == ROLE_SimulatedProxy)
+    /*if (Character && Character->Role == ROLE_SimulatedProxy)
     {
         if (AbilityComponent && AbilityComponent->AbilitySet && AbilityComponent->AbilitySet->Abilities.IsValidIndex(ID))
         {
             // Remove the ability
             AbilityComponent->AbilitySet->Abilities[ID] = nullptr;
         }
-    }
+    }*/
     // END COMMENT OUT TO FIX
 }
