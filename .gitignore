@@ -1,0 +1,16 @@
+*.VC.opendb
+.vs
+*.v12.suo
+Binaries
+Build
+Intermediate
+Saved
+*.sdf
+*.sln
+Packaged
+*.opensdf
+DerivedDataCache
+*.VC.db
+*.VC.opendb
+Cooked
+ipch
